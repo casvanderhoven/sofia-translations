@@ -1,0 +1,19 @@
+{
+  "name": "@sofia/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./node": "./src/node.ts"
+  },
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.2.0",
+    "yaml": "^2.8.0",
+    "zod": "^4.6.5"
+  }
+}

@@ -1,0 +1,20 @@
+---
+const labels: Array<[string, string]> = [
+  ["nom", "nominative"],
+  ["gen", "genitive"],
+  ["dat", "dative"],
+  ["acc", "accusative"],
+  ["abl", "ablative"],
+  ["voc", "vocative"],
+  ["adv", "adverbial"],
+  ["verb", "verb"],
+];
+---
+<div class="reader-tools">
+  <button id="structure-toggle" class="toggle" type="button" aria-pressed="false">Show structure</button>
+  <ul class="legend" aria-label="Colour legend">
+    {labels.map(([key, name]) => (
+      <li><span class="swatch" style={`--c: var(--label-${key})`}></span>{name}</li>
+    ))}
+  </ul>
+</div>

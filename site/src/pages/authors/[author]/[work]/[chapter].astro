@@ -1,0 +1,40 @@
+---
+import Legend from "../../../../components/Legend.astro";
+import SectionView from "../../../../components/SectionView.astro";
+import Base from "../../../../layouts/Base.astro";
+import { authorUrl, chapterRoutes, chapterUrl, rangeLabel, workUrl } from "../../../../lib/content";
+
+export async function getStaticPaths() {
+  const routes = await chapterRoutes();
+  return routes.map((r) => ({
+    params: { author: r.author.slug, work: r.work.slug, chapter: r.chapter.slug },
+    props: r,
+  }));
+}
+const { author, work, chapter, prev, next } = Astro.props;
+const form = chapter.sections[0]?.section.meta.form ?? "verse";
+---
+<Base title={`${chapter.meta.title} · ${work.meta.title}`}>
+  <header class="reader-head">
+    <div>
+      <div class="kicker ui muted"><a href={authorUrl(author)}>{author.meta.name}</a> · <a href={workUrl(author, work)}>{work.meta.title}</a></div>
+      <h1>{chapter.meta.title}</h1>
+      <p class="muted ui">{rangeLabel(chapter.meta.range, form)}</p>
+    </div>
+    <Legend />
+  </header>
+  <nav class="section-nav" aria-label="Sections">
+    <ol>
+      {chapter.sections.map((s, k) => (
+        <li><a href={`#s${String(k + 1).padStart(2, "0")}`}>{rangeLabel(s.section.meta.lines, s.section.meta.form).replace(/^(Lines?|Sections?) /, "")}</a></li>
+      ))}
+    </ol>
+  </nav>
+  {chapter.sections.map((s, k) => <SectionView node={s} index={k} />)}
+  <nav class="chapter-pager" aria-label="Chapters">
+    <span>{prev && <a href={chapterUrl(author, work, prev)}>← {prev.meta.title}</a>}</span>
+    <span>{next && <a href={chapterUrl(author, work, next)}>{next.meta.title} →</a>}</span>
+  </nav>
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <script src="../../../../scripts/reader.ts"></script>
+</Base>

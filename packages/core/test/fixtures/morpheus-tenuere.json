@@ -1,0 +1,69 @@
+{
+  "RDF": {
+    "Annotation": {
+      "about": "urn:TuftsMorphologyService:tenuere:morpheuslat",
+      "creator": { "Agent": { "about": "org.perseus:tools:morpheus.v1" } },
+      "created": { "$": "2020-01-01T00:00:00.000000" },
+      "hasTarget": { "Description": { "about": "urn:word:tenuere" } },
+      "title": {},
+      "hasBody": [
+        {
+          "resource": "urn:uuid:idmb34752418403f9c2c6a1f847d8bab9f0e4c27d49a5b734887101231bfe57c4f3"
+        },
+        {
+          "resource": "urn:uuid:idmd7a1a64094262af734e328a343497763f0c105bdde66829730b435a909351133"
+        }
+      ],
+      "Body": [
+        {
+          "about": "urn:uuid:idmb34752418403f9c2c6a1f847d8bab9f0e4c27d49a5b734887101231bfe57c4f3",
+          "type": { "resource": "cnt:ContentAsXML" },
+          "rest": {
+            "entry": {
+              "uri": null,
+              "dict": {
+                "hdwd": { "lang": "lat", "$": "teneo" },
+                "pofs": { "order": 1, "$": "verb" }
+              },
+              "infl": {
+                "term": { "lang": "lat", "stem": { "$": "tenu" }, "suff": { "$": "e_re" } },
+                "pofs": { "order": 1, "$": "verb" },
+                "mood": { "$": "indicative" },
+                "num": { "$": "plural" },
+                "pers": { "$": "3rd" },
+                "tense": { "$": "perfect" },
+                "voice": { "$": "active" },
+                "stemtype": { "$": "perfstem" },
+                "morph": { "$": "poetic" }
+              }
+            }
+          }
+        },
+        {
+          "about": "urn:uuid:idmd7a1a64094262af734e328a343497763f0c105bdde66829730b435a909351133",
+          "type": { "resource": "cnt:ContentAsXML" },
+          "rest": {
+            "entry": {
+              "uri": null,
+              "dict": {
+                "hdwd": { "lang": "lat", "$": "tenuo" },
+                "pofs": { "order": 1, "$": "verb" }
+              },
+              "infl": {
+                "term": { "lang": "lat", "stem": { "$": "tenu" }, "suff": { "$": "e_re" } },
+                "pofs": { "order": 1, "$": "verb" },
+                "mood": { "$": "subjunctive" },
+                "num": { "$": "singular" },
+                "pers": { "$": "2nd" },
+                "tense": { "$": "present" },
+                "voice": { "$": "passive" },
+                "stemtype": { "$": "conj1" },
+                "derivtype": { "$": "are_vb" }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

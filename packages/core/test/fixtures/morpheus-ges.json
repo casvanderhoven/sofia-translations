@@ -1,0 +1,73 @@
+{
+  "RDF": {
+    "Annotation": {
+      "about": "urn:TuftsMorphologyService:γῆς:morpheusgrc",
+      "creator": { "Agent": { "about": "org.perseus:tools:morpheus.v1" } },
+      "created": { "$": "2020-01-01T00:00:00.000000" },
+      "hasTarget": { "Description": { "about": "urn:word:γῆς" } },
+      "title": {},
+      "hasBody": [
+        {
+          "resource": "urn:uuid:idmf7e56476b933404241d238c7ab3be2861c9ec0562043c966ca3bf70937e266bf"
+        },
+        {
+          "resource": "urn:uuid:idm739e79645af85806c5f8524ac8abe8f092911961b5a9348c8f7333a91e0f6fe6"
+        }
+      ],
+      "Body": [
+        {
+          "about": "urn:uuid:idmf7e56476b933404241d238c7ab3be2861c9ec0562043c966ca3bf70937e266bf",
+          "type": { "resource": "cnt:ContentAsXML" },
+          "rest": {
+            "entry": {
+              "uri": null,
+              "dict": {
+                "hdwd": { "lang": "grc", "$": "Γαῖα" },
+                "pofs": { "order": 3, "$": "noun" },
+                "decl": { "$": "1st" },
+                "gend": { "$": "feminine" }
+              },
+              "infl": {
+                "term": { "lang": "grc", "stem": { "$": "γ" }, "suff": { "$": "ῆς" } },
+                "pofs": { "order": 3, "$": "noun" },
+                "decl": { "$": "1st" },
+                "case": { "order": 6, "$": "genitive" },
+                "gend": { "$": "feminine" },
+                "num": { "$": "singular" },
+                "dial": { "$": "Attic epic Ionic" },
+                "stemtype": { "$": "eh_ehs" },
+                "morph": { "$": "contr" }
+              }
+            }
+          }
+        },
+        {
+          "about": "urn:uuid:idm739e79645af85806c5f8524ac8abe8f092911961b5a9348c8f7333a91e0f6fe6",
+          "type": { "resource": "cnt:ContentAsXML" },
+          "rest": {
+            "entry": {
+              "uri": null,
+              "dict": {
+                "hdwd": { "lang": "grc", "$": "γῆ" },
+                "pofs": { "order": 3, "$": "noun" },
+                "decl": { "$": "1st" },
+                "gend": { "$": "feminine" }
+              },
+              "infl": {
+                "term": { "lang": "grc", "stem": { "$": "γ" }, "suff": { "$": "ῆς" } },
+                "pofs": { "order": 3, "$": "noun" },
+                "decl": { "$": "1st" },
+                "case": { "order": 6, "$": "genitive" },
+                "gend": { "$": "feminine" },
+                "num": { "$": "singular" },
+                "dial": { "$": "Attic epic Ionic" },
+                "stemtype": { "$": "eh_ehs" },
+                "morph": { "$": "contr" }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

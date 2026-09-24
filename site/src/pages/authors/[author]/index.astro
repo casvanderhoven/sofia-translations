@@ -1,0 +1,31 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { chapterUrl, getTree, rangeLabel, workUrl } from "../../../lib/content";
+
+export async function getStaticPaths() {
+  const tree = await getTree();
+  return tree.authors.map((author) => ({ params: { author: author.slug }, props: { author } }));
+}
+const { author } = Astro.props;
+---
+<Base title={author.meta.name}>
+  <header class="page-head">
+    <div class="kicker">Author</div>
+    <h1>{author.meta.name}{author.meta.nameOriginal && <span class="muted"> · <span lang={author.works[0]?.meta.lang === "lat" ? "la" : "grc"}>{author.meta.nameOriginal}</span></span>}</h1>
+    {author.meta.dates && <p class="muted ui">{author.meta.dates}</p>}
+    {author.meta.blurb && <p class="prose">{author.meta.blurb}</p>}
+  </header>
+  {author.works.map((w) => (
+    <section>
+      <h2><a href={workUrl(author, w)}>{w.meta.title}</a></h2>
+      <ul class="chapter-list">
+        {w.chapters.map((c) => (
+          <li>
+            <a href={chapterUrl(author, w, c)}>{c.meta.title}</a>
+            <span class="muted ui">{rangeLabel(c.meta.range, w.chapters[0]?.sections[0]?.section.meta.form ?? "verse")}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Base>

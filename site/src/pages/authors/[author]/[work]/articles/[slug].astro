@@ -1,0 +1,27 @@
+---
+import { marked } from "marked";
+import Base from "../../../../../layouts/Base.astro";
+import { getTree, workUrl } from "../../../../../lib/content";
+
+export async function getStaticPaths() {
+  const tree = await getTree();
+  return tree.authors.flatMap((author) =>
+    author.works.flatMap((work) =>
+      work.articles.map((article) => ({
+        params: { author: author.slug, work: work.slug, slug: article.slug },
+        props: { author, work, article },
+      })),
+    ),
+  );
+}
+const { author, work, article } = Astro.props;
+const html = await marked.parse(article.body);
+---
+<Base title={article.title}>
+  <article class="prose">
+    <div class="kicker ui muted"><a href={workUrl(author, work)}>{work.meta.title}</a> · {author.meta.name}</div>
+    <h1>{article.title}</h1>
+    {article.date && <p class="muted ui">{article.date}</p>}
+    <Fragment set:html={html} />
+  </article>
+</Base>

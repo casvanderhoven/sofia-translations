@@ -1,0 +1,47 @@
+---
+import Base from "../../../../layouts/Base.astro";
+import { articleUrl, authorUrl, chapterUrl, getTree, rangeLabel } from "../../../../lib/content";
+
+export async function getStaticPaths() {
+  const tree = await getTree();
+  return tree.authors.flatMap((author) =>
+    author.works.map((work) => ({
+      params: { author: author.slug, work: work.slug },
+      props: { author, work },
+    })),
+  );
+}
+const { author, work } = Astro.props;
+const form = work.chapters[0]?.sections[0]?.section.meta.form ?? "verse";
+---
+<Base title={`${work.meta.title} · ${author.meta.name}`}>
+  <header class="page-head">
+    <div class="kicker"><a href={authorUrl(author)}>{author.meta.name}</a></div>
+    <h1>{work.meta.title}{work.meta.titleOriginal && <span class="muted"> · <span lang={work.meta.lang === "lat" ? "la" : "grc"}>{work.meta.titleOriginal}</span></span>}</h1>
+    {work.meta.description && <p class="prose">{work.meta.description}</p>}
+  </header>
+  <h2>Chapters</h2>
+  <ul class="chapter-list">
+    {work.chapters.map((c) => (
+      <li>
+        <a href={chapterUrl(author, work, c)}>{c.meta.title}</a>
+        <span class="muted ui">{rangeLabel(c.meta.range, form)} · {c.sections.length} section{c.sections.length === 1 ? "" : "s"}</span>
+      </li>
+    ))}
+  </ul>
+  {work.articles.length > 0 && (
+    <>
+      <h2>Essays</h2>
+      <ul class="plain-list">
+        {work.articles.map((a) => (
+          <li><a href={articleUrl(author, work, a.slug)}>{a.title}</a>{a.summary && <span class="muted"> — {a.summary}</span>}</li>
+        ))}
+      </ul>
+    </>
+  )}
+  {work.meta.source && (
+    <p class="attribution">
+      Text: {work.meta.source.edition}. {work.meta.source.url ? <a href={work.meta.source.url}>Perseus Digital Library</a> : "Perseus Digital Library"}, {work.meta.source.license}.
+    </p>
+  )}
+</Base>

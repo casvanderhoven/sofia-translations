@@ -1,0 +1,38 @@
+{
+  "name": "sofia",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Sofia — English translations of classical Greek and Latin texts, side by side with the original.",
+  "packageManager": "pnpm@10.28.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n site,api,editor -c blue,green,magenta \"pnpm --filter @sofia/site dev\" \"pnpm --filter @sofia/editor-server dev\" \"pnpm --filter @sofia/editor dev\"",
+    "build": "pnpm --filter @sofia/site build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "validate:content": "tsx scripts/validate-content.ts",
+    "migrate:legacy": "tsx scripts/migrate-legacy.ts",
+    "import:cts": "tsx scripts/import-cts.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "@types/node": "^24.0.0",
+    "concurrently": "^9.2.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0",
+    "@sofia/core": "workspace:*",
+    "yaml": "^2.8.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

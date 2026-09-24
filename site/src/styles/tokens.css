@@ -1,0 +1,51 @@
+/*
+ * Sofia design tokens — direction C, "Blend".
+ * A quiet modern shell (IBM Plex Sans) around a typographic text block (Source Serif 4),
+ * Fraunces for display. Warm white ground; grammatical labels as tinted highlights with
+ * a coloured underline so colour is never the only cue. Components only ever use these tokens.
+ */
+:root {
+  --bg: #fbfaf7;
+  --bg-elevated: #ffffff;
+  --fg: #1e1c19;
+  --muted: #7a746a;
+  --rule: #e8e3da;
+  --rule-strong: #d9d3c8;
+  --accent: #b04a2a;
+  --accent-soft: #f4e4dc;
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-grc: "Source Serif 4", "Gentium Plus", "Palatino Linotype", serif;
+  --font-lat: "Source Serif 4", "Gentium Plus", Georgia, serif;
+  --font-en: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --label-nom: #2a5db0;
+  --label-gen: #a86a0f;
+  --label-dat: #2e7d4f;
+  --label-acc: #b83a2a;
+  --label-abl: #6f4fb3;
+  --label-voc: #b8437e;
+  --label-adv: #6e6a63;
+  --label-verb: #1e1c19;
+  --label-other: #a39c90;
+  --label-alpha: 0.08;
+  --label-alpha-hover: 0.2;
+
+  --measure: 34rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 5rem;
+  --radius: 8px;
+  --radius-sm: 3px;
+  --shadow: 0 10px 30px rgba(30, 28, 25, 0.12);
+
+  --text-size: 1.125rem;
+  --text-leading: 1.8;
+  --text-size-original: 1.3125rem;
+}

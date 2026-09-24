@@ -1,0 +1,57 @@
+---
+import type { SectionNode } from "@sofia/core/node";
+import { marked } from "marked";
+import { langAttr, rangeLabel } from "../lib/content";
+import { indexGroups, renderOriginalUnit, renderTranslationParagraph } from "../lib/render";
+
+interface Props {
+  node: SectionNode;
+  index: number;
+}
+const { node, index } = Astro.props;
+const s = node.section;
+const groups = indexGroups(s);
+const id = `s${String(index + 1).padStart(2, "0")}`;
+const tokensByUnit = new Map<string, typeof s.tokens>();
+for (const t of s.tokens) {
+  const arr = tokensByUnit.get(t.unit) ?? [];
+  arr.push(t);
+  tokensByUnit.set(t.unit, arr);
+}
+const trlByParagraph = new Map<number, typeof s.translationTokens>();
+for (const t of s.translationTokens) {
+  const arr = trlByParagraph.get(t.paragraph) ?? [];
+  arr.push(t);
+  trlByParagraph.set(t.paragraph, arr);
+}
+const notesHtml = s.notes ? await marked.parse(s.notes) : "";
+---
+<section class="section" id={id} data-section>
+  <header class="section-head">
+    <h3>{s.meta.title}</h3>
+    <span class="range">{rangeLabel(s.meta.lines, s.meta.form)}</span>
+  </header>
+  <div class="columns">
+    <div class="original" lang={langAttr(s.meta.lang)}>
+      {s.original.map((u) => (
+        <>
+          {u.speaker && <div class="speaker">{u.speaker}</div>}
+          <div class={`unit ${s.meta.form === "prose" ? "prose-unit" : ""}`} id={`l${u.n}`}>
+            <span class="ln" aria-hidden="true">{u.n}</span>
+            <Fragment set:html={renderOriginalUnit(u.text, tokensByUnit.get(u.n) ?? [], groups)} />
+          </div>
+        </>
+      ))}
+    </div>
+    <div class="translation" lang="en">
+      {s.translation.length === 0 && <p class="placeholder">Translation forthcoming.</p>}
+      {s.translation.map((p, k) => (
+        <>
+          {p.speaker && <div class="speaker">{p.speaker}</div>}
+          <p><Fragment set:html={renderTranslationParagraph(p.text, trlByParagraph.get(k) ?? [], groups)} /></p>
+        </>
+      ))}
+    </div>
+  </div>
+  {notesHtml && <aside class="notes"><Fragment set:html={notesHtml} /></aside>}
+</section>

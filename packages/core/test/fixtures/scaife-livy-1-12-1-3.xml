@@ -1,0 +1,7 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:py="http://codespeak.net/lxml/objectify/pytype" xml:lang="eng" py:pytype="TREE"><text><body><div xml:lang="lat" type="edition" n="urn:cts:latinLit:phi0914.phi001.perseus-lat2"><div type="textpart" subtype="part" n="1"><div type="textpart" subtype="book" n="1"><div type="textpart" subtype="chapter" n="12"><div type="textpart" subtype="section" n="1"><p>tenuere tamen arcem Sabini atque inde postero die, cum Romanus
+                                    exercitus instructus quod inter Palatinum Capitolinumque collem
+                                    campi est complesset, non prius <choice><sic>decenderunt</sic><corr>descenderunt</corr></choice> in aequum, quam ira et cupiditate recuperandae arcis
+                                    stimulante animos in adversum Romani subiere.</p></div><div type="textpart" subtype="section" n="2"><p>principes utrimque pugnam ciebant, ab Sabinis Mettius Curtius, ab
+                                    Romanis Hostius Hostilius. hic rem Romanam iniquo loco ad prima
+                                    signa animo atque audacia <choice><sic>substinebat.</sic><corr>sustinebat.</corr></choice></p></div><div type="textpart" subtype="section" n="3"><p>ut Hostius cecidit, confestim Romana inclinatur acies fusaque est
+                                    ad veterem portam Palatii.</p></div></div></div></div></div></body></text></TEI>

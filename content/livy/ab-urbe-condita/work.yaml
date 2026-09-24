@@ -1,0 +1,10 @@
+title: Ab urbe condita
+lang: lat
+urnBase: urn:cts:latinLit:phi0914.phi001.perseus-lat2
+source:
+  edition: Livy, Ab urbe condita, Perseus Digital Library edition (perseus-lat2)
+  license: CC BY-SA 4.0
+  url: https://scaife.perseus.org/reader/urn:cts:latinLit:phi0914.phi001.perseus-lat2:1.12/
+description: The history of Rome from its foundation. Book 1 covers the kings,
+  from Aeneas to the expulsion of the Tarquins.
+order: 1

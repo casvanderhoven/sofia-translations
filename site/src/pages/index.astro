@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import { authorUrl, getTree, workUrl } from "../lib/content";
+
+const tree = await getTree();
+---
+<Base title="Sofia">
+  <div class="hero">
+    <h1>Study and learn from ancient texts</h1>
+    <p>Sofia is a growing collection of English translations of Greek and Latin texts, read side by side with the original. Turn on the structure view to see how each word is built and where it lands in the translation.</p>
+  </div>
+  <div class="author-grid">
+    {tree.authors.map((a) => (
+      <div>
+        <h2><a href={authorUrl(a)}>{a.meta.name}</a></h2>
+        <ul>
+          {a.works.map((w) => (
+            <li><a href={workUrl(a, w)}>{w.meta.title}</a>{w.meta.titleOriginal && <span class="muted"> · <span lang={w.meta.lang === "lat" ? "la" : "grc"}>{w.meta.titleOriginal}</span></span>}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</Base>
