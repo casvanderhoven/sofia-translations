@@ -18,7 +18,8 @@
     "lint:fix": "biome check --write .",
     "validate:content": "tsx scripts/validate-content.ts",
     "migrate:legacy": "tsx scripts/migrate-legacy.ts",
-    "import:cts": "tsx scripts/import-cts.ts"
+    "import:cts": "tsx scripts/import-cts.ts",
+    "deploy": "pnpm build && wrangler pages deploy site/dist --project-name sofia-translations --branch main --commit-dirty=true"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",
@@ -28,7 +29,8 @@
     "typescript": "^5.9.0",
     "vitest": "^3.2.0",
     "@sofia/core": "workspace:*",
-    "yaml": "^2.8.0"
+    "yaml": "^2.8.0",
+    "wrangler": "^4.0.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
